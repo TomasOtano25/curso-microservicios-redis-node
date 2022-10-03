@@ -3,6 +3,8 @@ const config = require('../config')
 const app = express()
 const user = require('./components/user/network')
 
+app.use(express.json())
+
 // ROUTER
 app.use('/api/user', user);
 
