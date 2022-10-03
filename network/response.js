@@ -15,7 +15,7 @@ exports.error = function (req, res, message, status) {
   let statusMessage = message || 'Internal Server Error'
 
   res.status(statusCode).send({
-    error: message,
+    error: statusMessage,
     status: statusCode,
     body: false
   })
