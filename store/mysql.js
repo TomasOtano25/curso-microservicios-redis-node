@@ -74,9 +74,11 @@ async function update(table, data) {
 }
 
 async function upsert(table, data) {
-  const exists = await get(table, data.id);
-  if (exists !== null) {
-    return update(table, data)
+  if (data && data.id) {
+    const exists = await get(table, data.id);
+    if (exists !== null) {
+      return update(table, data)
+    }
   }
   return insert(table, data);
 }

@@ -1,7 +1,5 @@
 const auth = require('../../../auth')
 
-const response = require('../../../network/response')
-
 module.exports = function checkAuth(action) {
 
   function middleware(req, res, next) {
@@ -9,7 +7,12 @@ module.exports = function checkAuth(action) {
       case 'update':
         // const owner = req.body.id
         auth.check.own(req, req.body.id)
-        next();
+        next()
+        break;
+
+      case 'follow':
+        auth.check.logged(req)
+        next()
         break;
       default:
         next()
