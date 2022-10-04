@@ -45,6 +45,54 @@ function list(table) {
   })
 }
 
+function get(table, id) {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM ${table} WHERE id='${id}'`, (error, data) => {
+      if (error) return reject(error)
+
+      resolve(data[0] || null)
+    })
+  })
+}
+
+async function insert(table, data) {
+  return new Promise((resolve, reject) => {
+    connection.query(`INSERT INTO ${table} SET ?`, data, (error, result) => {
+      if (error) return reject(error)
+      resolve(result)
+    })
+  })
+}
+
+async function update(table, data) {
+  return new Promise((resolve, reject) => {
+    connection.query(`UPDATE ${table} SET ? WHERE id=?`, [data, data.id], (error, result) => {
+      if (error) return reject(error)
+      resolve(result)
+    })
+  })
+}
+
+async function upsert(table, data) {
+  const exists = await get(table, data.id);
+  if (exists !== null) {
+    return update(table, data)
+  }
+  return insert(table, data);
+}
+
+async function query(table, query) {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM ${table} WHERE ?`, query, (error, result) => {
+      if (error) return reject(error)
+      resolve(result[0] || null)
+    })
+  })
+}
+
 module.exports = {
-  list
+  list,
+  get,
+  upsert,
+  query
 }
