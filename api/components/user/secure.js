@@ -8,12 +8,8 @@ module.exports = function checkAuth(action) {
     switch (action) {
       case 'update':
         // const owner = req.body.id
-        try {
-          auth.check.own(req, req.body.id)
-          next();
-        } catch (error) {
-          response.error(req, res, error.message, 400)
-        }
+        auth.check.own(req, req.body.id)
+        next();
         break;
       default:
         next()

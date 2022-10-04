@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 const config = require('../config')
+const error = require('../utils/error')
 
 const secret = config.jwt.secret
 
@@ -11,11 +12,11 @@ function sign(data) {
 function getToken(auth) {
   // Bearer ................
   if (!auth) {
-    throw new Error("Don't have a token")
+    throw error("Don't have a token", 401)
   }
 
   if (auth.indexOf('Bearer ') === -1) {
-    throw new Error('Invalid format')
+    throw error('Invalid format', 401)
   }
 
   const token = auth.replace('Bearer ', '')
@@ -34,7 +35,7 @@ const check = {
 
     // COMPROBAR SI ES O NO PROPIO
     if (decoded.id !== owner) {
-      throw new Error("Can't do this")
+      throw error("Can't do this", 401)
     }
   }
 }
