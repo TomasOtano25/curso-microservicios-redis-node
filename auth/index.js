@@ -31,6 +31,11 @@ const check = {
   own: function (req, owner) {
     const decoded = decodeHeader(req)
     console.log(decoded)
+
+    // COMPROBAR SI ES O NO PROPIO
+    if (decoded.id !== owner) {
+      throw new Error("Can't do this")
+    }
   }
 }
 
