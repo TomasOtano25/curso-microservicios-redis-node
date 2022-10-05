@@ -5,10 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./api/index.js",
-    "start-services": "concurrently \"node ./api/index.js\" \"node ./mysql/index.js\"",
+    "start-services": "concurrently \"node ./api/index.js\" \"node ./mysql/index.js\" \"node ./post/index.js\"",
     "dev": "nodemon ./api/index.js",
     "dev-services": "concurrently \"nodemon ./api/index.js\" \"nodemon ./mysql/index.js\" \"nodemon ./post/index.js\"",
-    "lint": "eslint"
+    "lint": "eslint",
+    "logs-pm2": "pm2 logs",
+    "status-pm2": "pm2 status",
+    "deploy-pm2": "pm2 start api/index.js & pm2 start mysql/index.js --name=mysql & pm2 start post/index.js --name=post",
+    "stop-pm2": "pm2 stop 0 1 2"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +33,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
+    "pm2": "^5.2.0",
     "prettier": "^2.7.1"
   }
 }
