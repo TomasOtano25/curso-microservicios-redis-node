@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const config = {
+  removeDB: process.env.REMOTE_DB || false,
   api: {
     port: process.env.PORT || 3000,
   },
@@ -15,7 +16,7 @@ const config = {
   },
   mysqlService: {
     host: process.env.MYSQL_SRV_HOST || 'localhost',
-    port: process.env.MYSQL_SRV_PORT || 3001
+    port: process.env.MYSQL_SRV_PORT || ''
   },
   post: {
     port: process.env.POST_PORT || 3002,
