@@ -3,6 +3,7 @@ npm i nanoid
 npm i express dotnev
 npm i swagger-ui-express
 npm i jsonwebtoken
+npm i request // npm i node-fetch@2
 ```
 
 ## Comandos de mysql
