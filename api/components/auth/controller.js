@@ -28,12 +28,13 @@ module.exports = function (injectedStore) {
   async function login(username, password) {
     const data = await store.query(TABLE, { username: username })
 
+    const values = data[0]
 
-    return bcrypt.compare(password, data.password)
+    return bcrypt.compare(password, values.password)
       .then((equals) => {
         // Generate token
         if (equals) {
-          const payload = { ...data }
+          const payload = { ...values }
           return auth.sign(payload)
         } else {
           throw new Error('Invalid Information')

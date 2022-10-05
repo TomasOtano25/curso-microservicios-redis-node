@@ -25,4 +25,8 @@ select * from user
 show tables;
 
 describe user;
+
+create table post(id varchar(32) primary key not null, text text, user varchar(32) );
+
+insert into post values ('999', 'Mi primer post', '1');
 ```

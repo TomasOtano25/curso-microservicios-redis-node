@@ -38,10 +38,25 @@ module.exports = function (injectedStore) {
   }
 
   function follow(from, to) {
-    return store.upsert(TABLE + '_follow', {
+    return store.upsert(`${TABLE}_follow`, {
       user_from: from,
       user_to: to
     })
+  }
+
+  function followers(user) {
+    const join = {}
+    join[TABLE] = 'user_from'; // { user: 'user_from'}
+    const query = { user_to: user }
+
+    return store.query(`${TABLE}_follow`, query, join)
+  }
+
+  function following(user) {
+    const join = {}
+    join[TABLE] = 'user_to'; // { user: 'user_to'}
+    const query = { user_from: user }
+    return store.query(`${TABLE}_follow`, query, join)
   }
 
   function remove(id) {
@@ -53,6 +68,8 @@ module.exports = function (injectedStore) {
     get,
     upsert,
     follow,
+    followers,
+    following,
     remove
   }
 }
