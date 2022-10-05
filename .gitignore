@@ -219,5 +219,5 @@ $RECYCLE.BIN/
 
 files/
 mysql_data
-./vercel.json
+vercel.json
 .vercel

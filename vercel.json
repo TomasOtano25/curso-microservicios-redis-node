@@ -1,5 +1,12 @@
 {
   "version": 2,
+  "env": {
+    "NODE_ENV": "production",
+    "MYSQL_HOST": "sql10.freemysqlhosting.net",
+    "MYSQL_USER": "sql10524531",
+    "MYSQL_PASS": "gimFCaP2V9",
+    "MYSQL_DB": "sql10524531"
+  },
   "builds": [
     {
       "src": "api/index.js",
