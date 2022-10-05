@@ -13,6 +13,9 @@ const config = {
     user: process.env.MYSQL_USER || 'root',
     password: process.env.MYSQL_PASS || 'root',
     database: process.env.MYSQL_DB || 'api_v1',
+  },
+  mysqlService: {
+    port: process.env.MYSQL_SRV_PORT || 3001
   }
 }
 

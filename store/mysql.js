@@ -112,5 +112,6 @@ module.exports = {
   list,
   get,
   upsert,
-  query
+  query,
+  insert
 }
