@@ -16,7 +16,11 @@ const config = {
   },
   mysqlService: {
     host: process.env.MYSQL_SRV_HOST || 'localhost',
-    port: process.env.MYSQL_SRV_PORT || '3001'
+    port: process.env.MYSQL_SRV_PORT || 3001
+  },
+  cacheService: {
+    host: process.env.CACHE_SRV_HOST || 'localhost',
+    port: process.env.CACHE_SRV_PORT || 3003
   },
   post: {
     port: process.env.POST_PORT || 3002,
