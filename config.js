@@ -14,6 +14,11 @@ const config = {
     password: process.env.MYSQL_PASS || 'root',
     database: process.env.MYSQL_DB || 'api_v1',
   },
+  redis: {
+    host: process.env.REDIS_HOST || 'localhost',
+    port: process.env.REDIS_PORT || 14143,
+    password: process.env.REDIS_PASS || 'root',
+  },
   mysqlService: {
     host: process.env.MYSQL_SRV_HOST || 'localhost',
     port: process.env.MYSQL_SRV_PORT || 3001
