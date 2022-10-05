@@ -3,7 +3,6 @@ require('dotenv').config()
 const config = {
   api: {
     port: process.env.PORT || 3000,
-
   },
   jwt: {
     secret: process.env.JWT_SECRET || 'secreto'
@@ -17,6 +16,9 @@ const config = {
   mysqlService: {
     host: process.env.MYSQL_SRV_HOST || 'localhost',
     port: process.env.MYSQL_SRV_PORT || 3001
+  },
+  post: {
+    port: process.env.POST_PORT || 3002,
   }
 }
 

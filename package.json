@@ -7,7 +7,7 @@
     "start": "node ./api/index.js",
     "start-services": "concurrently \"node ./api/index.js\" \"node ./mysql/index.js\"",
     "dev": "nodemon ./api/index.js",
-    "dev-services": "concurrently \"nodemon ./api/index.js\" \"nodemon ./mysql/index.js\"",
+    "dev-services": "concurrently \"nodemon ./api/index.js\" \"nodemon ./mysql/index.js\" \"nodemon ./post/index.js\"",
     "lint": "eslint"
   },
   "keywords": [],
