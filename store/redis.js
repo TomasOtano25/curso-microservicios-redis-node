@@ -15,7 +15,7 @@ function list(table) {
 
       let res = data || null;
       if (data) {
-        res = JSON.stringify(data)
+        res = JSON.parse(data)
       }
       resolve(res);
     })
@@ -23,7 +23,17 @@ function list(table) {
 }
 
 function get(table, id) {
-  //
+  return new Promise((resolve, reject) => {
+    client.get(`${table}_${id}`, (error, data) => {
+      if (error) return reject(error)
+
+      let res = data || null;
+      if (data) {
+        res = JSON.parse(data)
+      }
+      resolve(res);
+    })
+  })
 }
 
 async function upsert(table, data) {

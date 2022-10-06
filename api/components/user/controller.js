@@ -4,14 +4,25 @@ const auth = require('../auth')
 
 const TABLE = 'user'
 
-module.exports = function (injectedStore) {
+module.exports = function (injectedStore, injectedCache) {
   let store = injectedStore
-  if (!store) {
-    store = require('../../../store/dummy')
-  }
+  let cache = injectedCache
+  if (!store) store = require('../../../store/dummy')
+  if (!cache) cache = require('../../../cache/dummy')
 
-  function list() {
-    return store.list(TABLE)
+
+  async function list() {
+    let users = await cache.list(TABLE)
+
+    if (!users) {
+      console.log('No estaba en cache. Buscando en DB')
+      users = await store.list(TABLE)
+      cache.upsert(TABLE, users);
+    } else {
+      console.log('Nos traemos datos de cache.')
+    }
+
+    return users;
   }
 
   function get(id) {
