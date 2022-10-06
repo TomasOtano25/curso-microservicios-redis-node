@@ -11,7 +11,7 @@
     "lint": "eslint",
     "logs-pm2": "pm2 logs",
     "status-pm2": "pm2 status",
-    "deploy-pm2": "pm2 start api/index.js & pm2 start mysql/index.js --name=mysql & pm2 start post/index.js --name=post",
+    "deploy-pm2": "pm2 start api/index.js & pm2 start mysql/index.js --name=mysql & pm2 start post/index.js --name=post & pm2 cache/index-cache.js --name=cache",
     "stop-pm2": "pm2 stop 0 1 2"
   },
   "keywords": [],
